@@ -1,0 +1,7 @@
+{
+  "name": "fromCSS",
+  "id": "807925991544813159",
+  "api": "1.0.0",
+  "main": "build/main.js",
+  "ui": "build/ui.html"
+}
