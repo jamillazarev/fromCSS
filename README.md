@@ -23,7 +23,7 @@ Write your notes below .fromCSS block. Notes will be saved in the same place aft
 * When applying styles for effects and backgrounds, the plugin looks for conflicts and removes only effects and fills of the same type as you have in CSS, while all the others remain unchanged. Conflicts are searched individually for each selected node.
 * If you add something inside the plugin, you will see changes, and if you decide to delete something via plugin nothing will happen, this is due to the specifics of the plugin: quickly add with removing conflicts, but do not replace the functionality of standard controls in Figma.
 
-## What is supported (the rest is ignored by the plugin):
+## What is supported (the rest is ignored by the plugin)
 * width
 * height
 * opacity
@@ -36,7 +36,7 @@ Write your notes below .fromCSS block. Notes will be saved in the same place aft
 * transform: rotate()
 * filter: blur()
 
-## Future releases:
+## Future releases
 Fonts, Borders, Background images: images, gradients(I'm in search of a good parser for the last one).
 
 ## Demonstration
