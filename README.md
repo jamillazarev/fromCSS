@@ -10,23 +10,23 @@ Select node/nodes to apply .fromCSS styles. After plugin relaunch .fromCSS block
 Write your notes below .fromCSS block. Notes will be saved in the same place after plugin, project or even Figma relaunch.
 
 ## In detail
-*You can select a node or nodes before or after the plugin is launched. When you change the selection styles from the block .fromCSS will be applied immediately.
-*Block .fromCSS must be the first. The name can be changed.
-*When applying styles for effects and backgrounds, the plugin looks for conflicts and removes only effects and backgrounds of the same type as you have in CSS, while all the others remain unchanged. Conflicts are searched individually for each node.
-*If you add something inside the plugin, you will see changes, and if you decide to delete the string, only that of the applied styles, nothing will happen, this is due to the specifics of the plugin: quickly add removing conflicts, but do not replace the functionality of standard controls in Figma.
+* You can select a node or nodes before or after the plugin is launched. When you change the selection styles from the block .fromCSS will be applied immediately.
+* Block .fromCSS must be the first. The name can be changed.
+* When applying styles for effects and backgrounds, the plugin looks for conflicts and removes only effects and backgrounds of the same type as you have in CSS, while all the others remain unchanged. Conflicts are searched individually for each node.
+* If you add something inside the plugin, you will see changes, and if you decide to delete the string, only that of the applied styles, nothing will happen, this is due to the specifics of the plugin: quickly add removing conflicts, but do not replace the functionality of standard controls in Figma.
 
 ## What is supported (the plugin just ignores the rest):
-*width
-*height
-*opacity
-*mix-blend-mode
-*border-radius
-*background, background-color
-*background-blend-mode
-*box-shadow, text-shadow
-*backdrop-filter: blur()
-*transform: rotate()
-*filter: blur()
+* width
+* height
+* opacity
+* mix-blend-mode
+* border-radius
+* background, background-color
+* background-blend-mode
+* box-shadow, text-shadow
+* backdrop-filter: blur()
+* transform: rotate()
+* filter: blur()
 
 ## What is planned in future releases:
 Fonts, Borders, Background images: images, gradients(I'm in search of a good parser for the last one).
