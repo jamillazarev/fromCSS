@@ -1,6 +1,6 @@
 # fromCSS
 
-Figma plugin. Paste CSS in Figma.
+Figma plugin. Write, paste, and apply CSS in Figma.
 
 ![artwork.png](https://i.imgur.com/UielVtc.png)
 
