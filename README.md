@@ -28,7 +28,7 @@ Write your notes below .fromCSS block. Notes will be saved in the same place aft
 * transform: rotate()
 * filter: blur()
 
-## What is planned in future releases:
+## Future releases:
 Fonts, Borders, Background images: images, gradients(I'm in search of a good parser for the last one).
 
 ## Demonstration
