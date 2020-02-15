@@ -2,7 +2,7 @@
 
 Figma plugin. Paste CSS in Figma.
 
-![artwork.png]()
+![artwork.png](https://imgur.com/a/NjxCkuT)
 
 ## Usage
 
