@@ -6,8 +6,16 @@ Figma plugin. Write, paste, and apply CSS.
 
 ## Usage
 Select node/nodes to apply .fromCSS styles. After plugin relaunch .fromCSS block will be blank.
-
 Write your notes below .fromCSS block. Notes will be saved in the same place after plugin, project or even Figma relaunch.
+
+## Use cases
+* Apply CSS from different generators like:
+    https://neumorphism.io/
+    https://brumm.af/shadows
+    https://www.cssmatic.com/box-shadow
+* Get rid of manual adding effects from CSS.
+* Save CSS notes to reuse in project.
+* Edit node properties fast
 
 ## In detail
 * You can select a node or nodes before or after the plugin is launched. When you change the selection styles from the block .fromCSS will be applied immediately.
