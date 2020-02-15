@@ -10,9 +10,9 @@ Write your notes below .fromCSS block. Notes will be saved in the same place aft
 
 ## Use cases
 * Apply CSS from different generators like:
-    https://neumorphism.io/
-    https://brumm.af/shadows
-    https://www.cssmatic.com/box-shadow
+** https://neumorphism.io/
+** https://brumm.af/shadows
+** https://www.cssmatic.com/box-shadow
 * Get rid of manual adding effects from CSS.
 * Save CSS notes to reuse in project.
 * Edit node properties fast
