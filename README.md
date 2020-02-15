@@ -9,7 +9,8 @@ Select node/nodes to apply .fromCSS styles. After plugin relaunch .fromCSS block
 Write your notes below .fromCSS block. Notes will be saved in the same place after plugin, project or even Figma relaunch.
 
 ## Use cases
-1. Apply CSS from different generators like: https://neumorphism.io/, https://brumm.af/shadows, https://www.cssmatic.com/box-shadow
+1. Apply CSS from different generators like:
+https://neumorphism.io/, https://brumm.af/shadows, https://www.cssmatic.com/box-shadow
 2. Get rid of manual adding effects from CSS.
 3. Save CSS notes to reuse in project.
 4. Edit node properties fast
