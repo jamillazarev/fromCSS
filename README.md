@@ -2,7 +2,7 @@
 
 Figma plugin. Paste CSS in Figma.
 
-![artwork.png](https://i.imgur.com/Cngxjoe.png)
+![artwork.png](https://i.imgur.com/UielVtc.png)
 
 ## Usage
 Select node/nodes to apply .fromCSS styles. After plugin relaunch .fromCSS block will be blank.
