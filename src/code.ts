@@ -59,7 +59,7 @@ figma.ui.onmessage = msg => {
 
     case 'getSelection':
       figma.ui.postMessage({selection: figma.currentPage.selection});
-      console.log(figma.currentPage.selection)
+      console.log(figma.currentPage.selection);
       break;
 
     case 'getNotes':
@@ -132,11 +132,7 @@ figma.ui.onmessage = msg => {
                 if (styles.backgroundBlendModeParsed && styles.backgroundBlendModeParsed[f]) {
                   let inside = false;
                   const checkArr = bgBlends;
-                  for (const v in checkArr) {
-                    if (styles.backgroundBlendModeParsed[f] === checkArr[v]) {
-                      inside = true
-                    }
-                  }
+                  inside = checkArr.includes(styles.backgroundBlendModeParsed[f]);
                   blendMode = inside ? styles.backgroundBlendModeParsed[f] : checkArr[0];
                 }
 
@@ -186,11 +182,7 @@ figma.ui.onmessage = msg => {
             case 'mixBlendModeParsed':
               let inside = false;
               const checkArr = blends;
-              for (const v in checkArr) {
-                if (styles.mixBlendModeParsed === checkArr[v]) {
-                  inside = true
-                }
-              }
+              inside = checkArr.includes(styles.mixBlendModeParsed);
 
               styles.mixBlendModeParsed = inside ? styles.mixBlendModeParsed : checkArr[0]
 
@@ -222,7 +214,6 @@ figma.ui.onmessage = msg => {
                 styles.heightParsed = Number(styles.heightParsed) > 0 ? Number(styles.heightParsed) : 1;
               }
 
-
               otherParameters.push({
                 name: "height",
                 value:  styles.heightParsed
@@ -233,7 +224,7 @@ figma.ui.onmessage = msg => {
 
               otherParameters.push({
                 name: "rotation",
-                value:  styles.transformRotateParsed
+                value:  styles.transformRotateParsed * -1
               })
               break;
             case 'borderRadiusParsed':

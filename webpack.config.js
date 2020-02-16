@@ -7,6 +7,10 @@ module.exports = (env, argv) => ({
     // This is necessary because Figma's 'eval' works differently than normal eval
     devtool: argv.mode === 'production' ? false : 'inline-source-map',
 
+    stats: {
+        warnings: false
+      },
+
     entry: {
         ui: './src/ui.js',
         main: './src/code.ts',

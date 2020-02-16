@@ -10,14 +10,13 @@
 import * as cssBoxShadow from "css-box-shadow";
 import * as mensch from "mensch";
 const bgParse = require('css-background-parser');
+const beautify_css = require('js-beautify').css;
 
 import { codemirror } from 'vue-codemirror';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/mode/css/css.js';
 import 'codemirror/theme/dracula.css';
 import 'codemirror/addon/selection/active-line.js';
-
-const beautify_css = require('js-beautify').css;
 
 const NUMERIC_REGEXP = /[-]{0,1}[\d]*[.]{0,1}[\d]+/g;
 
@@ -42,9 +41,9 @@ export default {
               "Select node/nodes to apply .fromCSS styles.\n" +
               "After plugin relaunch .fromCSS block will be blank\n\n" +
               "☄️\n" +
-              "You can write your notes below .fromCSS block.\n" +
-              "Notes will be saved and in same place after\n" +
-              "figma, project or plugin relaunch.\n" +
+              "Write your notes below .fromCSS block.\n" +
+              "Notes will be saved in the same place after\n" +
+              "plugin, project or even Figma relaunch.\n" +
               "*/\n\n" +
               ".fromCSS {\n  \n" +
               "}"
@@ -87,7 +86,10 @@ export default {
         mixBlendModeParsed: "",
 
         backgroundBlendModeInitial: "",
-        backgroundBlendModeParsed: ""
+        backgroundBlendModeParsed: "",
+
+        boxSizingInitial: "",
+        boxSizingParsed: ""
       }
     };
   },
@@ -144,7 +146,7 @@ export default {
       return res
     },
     globalPreparing(parse) {
-      if (parse && mensch.parse(this.cssInitial).stylesheet.rules[0] && mensch.parse(this.cssInitial).stylesheet.rules[0].declarations) this.cssParsed = mensch.parse(this.cssInitial).stylesheet.rules[0].declarations;
+      if (parse && mensch.parse(this.cssInitial).stylesheet.rules[0] && mensch.parse(this.cssInitial).stylesheet.rules[0].declarations) this.newStyles = {}; this.cssParsed = mensch.parse(this.cssInitial).stylesheet.rules[0].declarations;
 
       if (this.cssParsed) {
         for (const ccsp in this.cssParsed) {
@@ -235,6 +237,14 @@ export default {
               }
               break;
 
+            case 'box-sizing':
+              if (parse) this.newStyles.boxSizingInitial = this.cssParsed[ccsp].value;
+
+              if (this.newStyles.boxSizingInitial.length > 0) {
+                this.newStyles.boxSizingParsed = this.newStyles.boxSizingInitial;
+              }
+              break;
+
             case 'background-color':
             case 'background':
               if (parse) this.newStyles.backgroundInitial = this.cssParsed[ccsp].value;
@@ -244,6 +254,7 @@ export default {
                 this.newStyles.backgroundParsed = bgParse.parseElementStyle(this.$refs.kostyl.style).backgrounds;
               }
               break;
+
           }
         }
       }
