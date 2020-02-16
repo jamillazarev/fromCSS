@@ -1,10 +1,8 @@
 # fromCSS
 
-Figma plugin. Write, paste, and apply CSS.
+Figma plugin. Write, paste, and apply CSS. Donate / Support https://gum.co/fromCSS
 
 ![artwork.png](https://i.imgur.com/UielVtc.png)
-
-Donate / Support https://gum.co/fromCSS
 
 ## Usage
 Select node/nodes to apply .fromCSS styles. After plugin relaunch .fromCSS block will be blank.
