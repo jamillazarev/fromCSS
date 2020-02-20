@@ -2,9 +2,28 @@ import * as Color from "color-js";
 
 figma.showUI(__html__, { width: 400, height: 440 });
 
+function getSelc() {
+  let s = [];
+  if (figma.currentPage.selection) {
+    for (const i in figma.currentPage.selection) {
+      if (figma.currentPage.selection[i].type != "GROUP") {
+        s.push(figma.currentPage.selection[i])
+      }
+    }
+
+    if (s.length > 0) {
+      return s
+    } else {
+      return ""
+    }
+  } else {
+    return ""
+  }
+}
+
 figma.on("selectionchange", () => {
   figma.ui.postMessage(
-      { selection: figma.currentPage.selection}
+      { selection: getSelc()}
   );
 });
 
@@ -58,8 +77,7 @@ figma.ui.onmessage = msg => {
   switch (msg.type) {
 
     case 'getSelection':
-      figma.ui.postMessage({selection: figma.currentPage.selection});
-      console.log(figma.currentPage.selection);
+      figma.ui.postMessage({selection: getSelc()});
       break;
 
     case 'getNotes':
