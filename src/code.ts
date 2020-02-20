@@ -8,6 +8,8 @@ function getSelc() {
     for (const i in figma.currentPage.selection) {
       if (figma.currentPage.selection[i].type != "GROUP") {
         s.push(figma.currentPage.selection[i])
+      } else {
+        figma.notify(`🌝 Groups are ignored`, {timeout: 1500})
       }
     }
 
