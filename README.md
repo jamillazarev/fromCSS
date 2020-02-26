@@ -1,6 +1,10 @@
 # fromCSS
 
-Figma plugin. Write, paste, and apply CSS. Donate/Support https://gum.co/fromCSS
+Figma plugin. Write, paste, and apply CSS.
+
+Install: https://www.figma.com/community/plugin/807925991544813159/fromCSS
+
+Donate/Support https://gum.co/fromCSS
 
 ![artwork.png](https://i.imgur.com/UielVtc.png)
 
