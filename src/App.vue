@@ -89,7 +89,13 @@ export default {
         backgroundBlendModeParsed: "",
 
         boxSizingInitial: "",
-        boxSizingParsed: ""
+        boxSizingParsed: "",
+
+        fontSizeInitial: "",
+        fontSizeParsed: "",
+
+        lineHeightInitial: "",
+        lineHeightParsed: ""
       }
     };
   },
@@ -252,6 +258,20 @@ export default {
               if (this.newStyles.backgroundInitial.length > 0) {
                 this.$refs.kostyl.style.background = this.newStyles.backgroundInitial;
                 this.newStyles.backgroundParsed = bgParse.parseElementStyle(this.$refs.kostyl.style).backgrounds;
+              }
+              break;
+
+            case 'font-size':
+              if (parse) this.newStyles.fontSizeInitial = this.cssParsed[ccsp].value;
+              if (this.newStyles.fontSizeInitial.length > 0) {
+                this.newStyles.fontSizeParsed = this.newStyles.fontSizeInitial.match(NUMERIC_REGEXP);
+              }
+              break;
+
+            case 'line-height':
+              if (parse) this.newStyles.lineHeightInitial = this.cssParsed[ccsp].value;
+              if (this.newStyles.lineHeightInitial.length > 0) {
+                this.newStyles.lineHeightParsed = this.newStyles.lineHeightInitial.match(NUMERIC_REGEXP);
               }
               break;
 

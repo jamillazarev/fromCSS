@@ -22,11 +22,21 @@ function getSelc() {
     return ""
   }
 }
+async function loadFonts(selection){
+  for (const n in selection) {
+    const node = figma.getNodeById(selection[n].id);
+    if (node.type === "TEXT") {
+      let len = node.characters.length
+      for (let i = 0; i < len; i++) {
+        await figma.loadFontAsync(node.getRangeFontName(i, i+1))
+      }
+    }
+
+  }
+}
 
 figma.on("selectionchange", () => {
-  figma.ui.postMessage(
-      { selection: getSelc()}
-  );
+  figma.ui.postMessage({ selection: getSelc()});
 });
 
 const blends = [
@@ -73,13 +83,14 @@ const bgBlends = [
 ];
 
 
-figma.ui.onmessage = msg => {
+figma.ui.onmessage = async msg => {
   const selection = msg.selection;
 
   switch (msg.type) {
 
     case 'getSelection':
       figma.ui.postMessage({selection: getSelc()});
+      
       break;
 
     case 'getNotes':
@@ -294,6 +305,31 @@ figma.ui.onmessage = msg => {
               }
 
               break;
+
+            case 'fontSizeParsed':
+              if (styles.fontSizeParsed) {
+                styles.fontSizeParsed = Number(styles.fontSizeParsed) > 0 ? Number(styles.fontSizeParsed) : 1;
+              }
+
+              otherParameters.push({
+                name: "fontSize",
+                value:  styles.fontSizeParsed
+              })
+              break;
+
+            case 'lineHeightParsed':
+              if (styles.lineHeightParsed) {
+                styles.lineHeightParsed = Number(styles.lineHeightParsed) > 0 ? Number(styles.lineHeightParsed) : 1;
+              }
+
+              otherParameters.push({
+                name: "lineHeight",
+                value:  {
+                  value: styles.lineHeightParsed,
+                  unit: "PIXELS",
+                }
+              })
+              break;
           }
         }
 
@@ -317,6 +353,7 @@ figma.ui.onmessage = msg => {
               }
             }
           }
+
           node.effects = filteredEffects;
           node.effects = node.effects.concat(addedEffects.reverse())
 
@@ -337,6 +374,10 @@ figma.ui.onmessage = msg => {
           }
           node.fills = filteredFills;
           node.fills = node.fills.concat(addedFills.reverse());
+
+          if (node.type==="TEXT") {
+            await loadFonts(selection);
+          }
 
           for (const param in otherParameters) {
             const na = otherParameters[param].name;
