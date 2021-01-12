@@ -45,9 +45,9 @@ Write your notes below .fromCSS block. Notes will be saved in the same place aft
 
 | Text Property | Support |
 | ----------- | ----------- |
-| `color` | 🛑 None |
+| `color` | ✅ Yes |
 | `font` shorthand | 🛑 None |
-| `font-size` | ✔️ Basic |
+| `font-size` | ✅ Yes (px, rem, em, %) |
 | `font-weight` | 🛑 None |
 | `font-family` | 🛑 None |
 | `line-height` | ✔️ Basic |
@@ -60,8 +60,8 @@ Write your notes below .fromCSS block. Notes will be saved in the same place aft
 
 | Font Options | px | em | rem | other
 | ----------- | ----------- | ----------- | ----------- | ----------- |
-| `font-size` | ✅ 16px = 16px | 🛑 16em = 16px | 🛑 16rem = 16px | 🛑 80% = 80px | 
-| `line-height` | ✅ 16px = 16px | 🛑 16em = 16px | 🛑 16rem = 16px | 🛑 80% = 80px<br /> 🛑 1.5 = 1.5px | 
+| `font-size` | ✅ 16px = 16px | ✅ 1em = 16px | ✅ 1rem = 16px | ✅ 125% = 20px | 
+| `line-height` | ✅ 16px = 16px | 🛑 1em = 16px<br /> (not relative to font size) | ✅ 1rem = 16px | ✅ 150% = 24px<br /> 🛑 1.5 = 1.5px | 
 
 
 ## Future releases

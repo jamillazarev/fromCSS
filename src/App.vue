@@ -20,6 +20,51 @@ import 'codemirror/addon/selection/active-line.js';
 
 const NUMERIC_REGEXP = /[-]{0,1}[\d]*[.]{0,1}[\d]+/g;
 
+const toUnit = (str, isLineHeight) => {
+  const value = str.match(NUMERIC_REGEXP)[0];
+  if (str.match('px')) {
+    return {
+      value,
+      unit: 'px'
+    }
+  }
+  else if (str.match('rem') || str.match('em')) {
+    return {
+      value: value * 100,
+      unit: '%'
+    }
+  }
+  else if (str.match('%')) {
+    return {
+      value,
+      unit: '%'
+    }
+  }
+  else if (str.match(NUMERIC_REGEXP)) {
+    if (isLineHeight) {
+      return {
+        value: value * 100,
+        unit: '%'
+      }
+    } else {
+      return {
+        value,
+        unit: 'px'
+      }
+    }
+  }
+  else {
+    return null;
+  }
+}
+
+const toPx = (str) => {
+  const { unit, value } = toUnit(str);
+  const result = unit === '%' ? (value/100) * 16 : value;
+  // This is strange, if I return the raw number it breaks
+  return result.toString();
+}
+
 export default {
   name: "App",
   components: {
@@ -95,7 +140,10 @@ export default {
         fontSizeParsed: "",
 
         lineHeightInitial: "",
-        lineHeightParsed: ""
+        lineHeightParsed: "",
+
+        colorInitial: "",
+        colorParsed: ""
       }
     };
   },
@@ -263,15 +311,23 @@ export default {
 
             case 'font-size':
               if (parse) this.newStyles.fontSizeInitial = this.cssParsed[ccsp].value;
-              if (this.newStyles.fontSizeInitial.length > 0) {
-                this.newStyles.fontSizeParsed = this.newStyles.fontSizeInitial.match(NUMERIC_REGEXP);
+              if (parseFloat(this.newStyles.fontSizeInitial) > 0) {
+                this.newStyles.fontSizeParsed = toPx(this.newStyles.fontSizeInitial)
               }
               break;
 
             case 'line-height':
               if (parse) this.newStyles.lineHeightInitial = this.cssParsed[ccsp].value;
               if (this.newStyles.lineHeightInitial.length > 0) {
-                this.newStyles.lineHeightParsed = this.newStyles.lineHeightInitial.match(NUMERIC_REGEXP);
+                this.newStyles.lineHeightParsed = toPx(this.newStyles.lineHeightInitial);
+              }
+              break;
+
+            case 'color':
+              if (parse) this.newStyles.colorInitial = this.cssParsed[ccsp].value;
+
+              if (this.newStyles.colorInitial.length > 0) {
+                this.newStyles.colorParsed = this.newStyles.colorInitial;
               }
               break;
 

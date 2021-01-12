@@ -188,6 +188,31 @@ figma.ui.onmessage = async msg => {
                 }
               };
               break;
+            case 'colorParsed':
+                const fill = styles.colorParsed;
+
+                console.log({fill})
+
+                if (fill) {
+                  removedFills.push.apply(removedFills, ["SOLID"]);
+
+                  let c = Color(fill);
+
+                  const color = {
+                    r: c.getRed() ? c.getRed() : 0,
+                    g: c.getGreen() ? c.getGreen() : 0,
+                    b: c.getBlue() ? c.getBlue() : 0
+                  }
+
+                  addedFills.push({
+                    color: color,
+                    opacity: c.getAlpha() ? c.getAlpha() : 1,
+                    type: "SOLID",
+                    visible: true
+                  })
+                }
+              break;
+
             case 'filterBlurParsed':
               removedEffects.push.apply(removedEffects, ["LAYER_BLUR"]);
 
