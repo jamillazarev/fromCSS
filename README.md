@@ -39,9 +39,33 @@ Write your notes below .fromCSS block. Notes will be saved in the same place aft
 * backdrop-filter: blur()
 * transform: rotate()
 * filter: blur()
+* font-size: see table
+* line-height: see table
+
+
+| Text Property | Support |
+| ----------- | ----------- |
+| `color` | ✅ Yes |
+| `font` shorthand | 🛑 None |
+| `font-size` | ✅ Yes (px, rem, em, %) |
+| `font-weight` | 🛑 None |
+| `font-family` | 🛑 None |
+| `line-height` | ✔️ Basic |
+| `letter-spacing` | 🛑 None |
+| `text-align` | 🛑 None |
+| `text-decoration` | 🛑 None |
+| `text-transform` | 🛑 None |
+| `text-shadow` | ✅ Yes |
+
+
+| Font Options | px | em | rem | other
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| `font-size` | ✅ 16px = 16px | ✅ 1em = 16px | ✅ 1rem = 16px | ✅ 125% = 20px | 
+| `line-height` | ✅ 16px = 16px | 🛑 1em = 16px<br /> (not relative to font size) | ✅ 1rem = 16px | ✅ 150% = 24px<br /> 🛑 1.5 = 1.5px | 
+
 
 ## Future releases
-Fonts, Borders, Background images: images, gradients(I'm in search of a good parser for the last one).
+Borders, Background images: images, gradients(I'm in search of a good parser for the last one).
 
 ## Demonstration
 https://youtu.be/zVazGBugYpA
