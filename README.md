@@ -28,44 +28,45 @@ Write your notes below .fromCSS block. Notes will be saved in the same place aft
 * If you add something inside the plugin, you will see changes, and if you decide to delete something via plugin nothing will happen, this is due to the specifics of the plugin: quickly add with removing conflicts, but do not replace the functionality of standard controls in Figma.
 
 ## What is supported (the rest is ignored by the plugin)
-* width
-* height
-* opacity
-* mix-blend-mode
-* border-radius
-* background, background-color
-* background-blend-mode
-* box-shadow, text-shadow
-* backdrop-filter: blur()
-* transform: rotate()
-* filter: blur()
-* font-size: see table
-* line-height: see table
+
+| Property | Supported Options
+| -- | -- |
+| `width` | To be confirmed (TBC) |
+| `height` | TBC |
+| `opacity` | TBC |
+| `mix-blend-mode` | TBC |
+| `border-radius` | TBC |
+| `background`, `background-color` | TBC |
+| `background-blend-mode` | TBC |
+| `box-shadow` | TBC |
+| `backdrop-filter` | `blur()` |
+| `transform` | `rotate()` |
+| `filter` | `blur()` |
 
 
-| Text Property | Support |
-| ----------- | ----------- |
-| `color` | ✅ Yes |
+| Text Property | Support | Supported Options
+| -- | -- | -- |
+| `color` | ✅ Yes |  `red`, <br />`#F00`, `#FF0000`, <br />`rgb(255,0,0)`, `rgba(255,0,0,0.5)`,<br />`hsl(0, 100%, 50%)` |
 | `font` shorthand | 🛑 None |
-| `font-size` | ✅ Yes (px, rem, em, %) |
+| `font-size` | ✅ Yes | `px`, `rem`, `em`, `%`
 | `font-weight` | 🛑 None |
 | `font-family` | 🛑 None |
-| `line-height` | ✔️ Basic |
+| `line-height` | ✅ Yes | `px`, `rem`, `em`, `%`, and unitless shorthand
 | `letter-spacing` | 🛑 None |
-| `text-align` | 🛑 None |
+| `text-align` | ✅ Yes | `left`, `center`, `right`, `justify` |
 | `text-decoration` | 🛑 None |
-| `text-transform` | 🛑 None |
+| `text-transform` | ✅ Yes | `none`, `lowercase`,`uppercase`, `capitalize` |
 | `text-shadow` | ✅ Yes |
-
-
-| Font Options | px | em | rem | other
-| ----------- | ----------- | ----------- | ----------- | ----------- |
-| `font-size` | ✅ 16px = 16px | ✅ 1em = 16px | ✅ 1rem = 16px | ✅ 125% = 20px | 
-| `line-height` | ✅ 16px = 16px | 🛑 1em = 16px<br /> (not relative to font size) | ✅ 1rem = 16px | ✅ 150% = 24px<br /> 🛑 1.5 = 1.5px | 
 
 
 ## Future releases
 Borders, Background images: images, gradients(I'm in search of a good parser for the last one).
+
+## Contributors
+| | | 
+| :--: | -- |
+| ![Jamil Lazarev](https://i.imgur.com/Rv0ozyq.png) | **Jamil Lazarev** 🇦🇿<br /> Plugin creator and maintainer <br /> [Twitter](https://twitter.com/jamillazarev) \| [Github](https://github.com/jamillazarev) \| [Donate](https://gum.co/fromCSS) |
+| ![Tait Brown](https://i.imgur.com/4AyJfy2.png) | **Tait Brown** 🇦🇺<br /> Added font support <br />[Twitter](https://twitter.com/taitems) \| [Github](https://github.com/taitems)  |
 
 ## Demonstration
 https://youtu.be/zVazGBugYpA

@@ -190,9 +190,6 @@ figma.ui.onmessage = async msg => {
               break;
             case 'colorParsed':
                 const fill = styles.colorParsed;
-
-                console.log({fill})
-
                 if (fill) {
                   removedFills.push.apply(removedFills, ["SOLID"]);
 
@@ -342,18 +339,49 @@ figma.ui.onmessage = async msg => {
               })
               break;
 
+            case 'lineHeightUnit':
             case 'lineHeightParsed':
-              if (styles.lineHeightParsed) {
+              if (styles.lineHeightParsed && styles.lineHeightUnit) {
                 styles.lineHeightParsed = Number(styles.lineHeightParsed) > 0 ? Number(styles.lineHeightParsed) : 1;
-              }
 
-              otherParameters.push({
-                name: "lineHeight",
-                value:  {
-                  value: styles.lineHeightParsed,
-                  unit: "PIXELS",
-                }
-              })
+                otherParameters.push({
+                  name: "lineHeight",
+                  value:  {
+                    value: styles.lineHeightParsed,
+                    unit: styles.lineHeightUnit || 'PIXELS',
+                  }
+                })
+              }
+              break;
+
+            case 'textAlignParsed':
+              const textAlignOptions = ['LEFT','CENTER','RIGHT','JUSTIFIED'];
+              const value = styles.textAlignParsed.replace('justify','justified').toUpperCase();
+              if (value && textAlignOptions.includes(value)) {
+                styles.textAlignParsed = value;
+
+                otherParameters.push({
+                  name: "textAlignHorizontal",
+                  value:  styles.textAlignParsed
+                })
+              }
+              break;
+
+            case 'textTransformParsed':
+              const textTransformOptions = ["ORIGINAL", "UPPER", "LOWER", "TITLE"];
+              const transformed = styles.textTransformParsed
+                .replace('none', 'ORIGINAL')
+                .replace('capitalize', 'TITLE')
+                .replace('uppercase', 'UPPER')
+                .replace('lowercase', 'LOWER')
+              if (transformed && textTransformOptions.includes(transformed)) {
+                styles.textTransformParsed = transformed;
+
+                otherParameters.push({
+                  name: "textCase",
+                  value:  styles.textTransformParsed
+                })
+              }
               break;
           }
         }

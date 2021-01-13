@@ -22,34 +22,41 @@ const NUMERIC_REGEXP = /[-]{0,1}[\d]*[.]{0,1}[\d]+/g;
 
 const toUnit = (str, isLineHeight) => {
   const value = str.match(NUMERIC_REGEXP)[0];
+  if (!value) return null;
   if (str.match('px')) {
     return {
       value,
-      unit: 'px'
+      unit: 'PIXELS'
     }
   }
-  else if (str.match('rem') || str.match('em')) {
+  else if (str.match('rem')) {
+    return {
+      value: value * 16,
+      unit: 'PIXELS'
+    }
+  }
+  else if (str.match('em')) {
     return {
       value: value * 100,
-      unit: '%'
+      unit: 'PERCENT'
     }
   }
   else if (str.match('%')) {
     return {
       value,
-      unit: '%'
+      unit: 'PERCENT'
     }
   }
   else if (str.match(NUMERIC_REGEXP)) {
     if (isLineHeight) {
       return {
         value: value * 100,
-        unit: '%'
+        unit: 'PERCENT'
       }
     } else {
       return {
         value,
-        unit: 'px'
+        unit: 'PIXELS'
       }
     }
   }
@@ -60,7 +67,7 @@ const toUnit = (str, isLineHeight) => {
 
 const toPx = (str) => {
   const { unit, value } = toUnit(str);
-  const result = unit === '%' ? (value/100) * 16 : value;
+  const result = unit === 'PERCENT' ? (value/100) * 16 : value;
   // This is strange, if I return the raw number it breaks
   return result.toString();
 }
@@ -141,9 +148,16 @@ export default {
 
         lineHeightInitial: "",
         lineHeightParsed: "",
+        lineHeightUnit: "",
 
         colorInitial: "",
-        colorParsed: ""
+        colorParsed: "",
+
+        textAlignInitial: "",
+        textAlignParsed: "",
+
+        textTransformInitial: "",
+        textTransformParsed: ""
       }
     };
   },
@@ -318,8 +332,10 @@ export default {
 
             case 'line-height':
               if (parse) this.newStyles.lineHeightInitial = this.cssParsed[ccsp].value;
-              if (this.newStyles.lineHeightInitial.length > 0) {
-                this.newStyles.lineHeightParsed = toPx(this.newStyles.lineHeightInitial);
+              if (this.newStyles.lineHeightInitial) {
+                const { unit, value } = toUnit(this.newStyles.lineHeightInitial, true);
+                this.newStyles.lineHeightUnit = unit;
+                this.newStyles.lineHeightParsed = value.toString(); 
               }
               break;
 
@@ -328,6 +344,22 @@ export default {
 
               if (this.newStyles.colorInitial.length > 0) {
                 this.newStyles.colorParsed = this.newStyles.colorInitial;
+              }
+              break;
+
+            case 'text-align':
+              if (parse) this.newStyles.textAlignInitial = this.cssParsed[ccsp].value;
+
+              if (this.newStyles.textAlignInitial.length > 0) {
+                this.newStyles.textAlignParsed = this.newStyles.textAlignInitial;
+              }
+              break;
+
+            case 'text-transform':
+              if (parse) this.newStyles.textTransformInitial = this.cssParsed[ccsp].value;
+
+              if (this.newStyles.textTransformInitial.length > 0) {
+                this.newStyles.textTransformParsed = this.newStyles.textTransformInitial;
               }
               break;
 
