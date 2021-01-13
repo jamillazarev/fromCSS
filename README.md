@@ -63,11 +63,11 @@ Write your notes below .fromCSS block. Notes will be saved in the same place aft
 ## Future releases
 Borders, Background images: images, gradients(I'm in search of a good parser for the last one).
 
+## Demonstration
+https://youtu.be/zVazGBugYpA
+
 ## Contributors
 | | | 
 | :--: | -- |
-| ![Jamil Lazarev](https://i.imgur.com/Rv0ozyq.png) | **Jamil Lazarev** 🇦🇿<br /> Plugin creator and maintainer <br /> [Twitter](https://twitter.com/jamillazarev) \| [Github](https://github.com/jamillazarev) \| [Donate](https://gum.co/fromCSS) |
+| ![Jamil Lazarev](https://i.imgur.com/GnLTJh0.png) | **Jamil Lazarev** 🇦🇿<br /> Plugin creator and maintainer <br /> [Twitter](https://twitter.com/jamillazarev) \| [Github](https://github.com/jamillazarev) \| [Donate](https://gum.co/fromCSS) |
 | ![Tait Brown](https://i.imgur.com/4AyJfy2.png) | **Tait Brown** 🇦🇺<br /> Added font support <br />[Twitter](https://twitter.com/taitems) \| [Github](https://github.com/taitems)  |
-
-## Demonstration
-https://youtu.be/zVazGBugYpA
