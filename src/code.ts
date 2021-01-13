@@ -369,19 +369,34 @@ figma.ui.onmessage = async msg => {
 
             case 'textTransformParsed':
               const textTransformOptions = ["ORIGINAL", "UPPER", "LOWER", "TITLE"];
-              const transformed = styles.textTransformParsed
+              const transformedTextTransform = styles.textTransformParsed
                 .replace('none', 'ORIGINAL')
                 .replace('capitalize', 'TITLE')
                 .replace('uppercase', 'UPPER')
                 .replace('lowercase', 'LOWER')
-              if (transformed && textTransformOptions.includes(transformed)) {
-                styles.textTransformParsed = transformed;
-
+                
+              if (transformedTextTransform && textTransformOptions.includes(transformedTextTransform)) {
+                styles.textTransformParsed = transformedTextTransform;
                 otherParameters.push({
                   name: "textCase",
                   value:  styles.textTransformParsed
                 })
               }
+
+              break;
+
+            case 'textDecorationParsed':
+              const textDecorationOptions = ["NONE", "UNDERLINE", "STRIKETHROUGH"];
+              const transformedTextDecoration = styles.textDecorationParsed.replace('line-through', 'strikethrough').toUpperCase()
+              
+              if (transformedTextDecoration && textDecorationOptions.includes(transformedTextDecoration)) {
+                styles.textDecorationParsed = transformedTextDecoration;
+                otherParameters.push({
+                  name: "textDecoration",
+                  value:  styles.textDecorationParsed
+                })
+              }
+
               break;
           }
         }

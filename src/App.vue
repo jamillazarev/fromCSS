@@ -157,7 +157,10 @@ export default {
         textAlignParsed: "",
 
         textTransformInitial: "",
-        textTransformParsed: ""
+        textTransformParsed: "",
+
+        textDecorationInitial: "",
+        textDecorationParsed: ""
       }
     };
   },
@@ -360,6 +363,14 @@ export default {
 
               if (this.newStyles.textTransformInitial.length > 0) {
                 this.newStyles.textTransformParsed = this.newStyles.textTransformInitial;
+              }
+              break;
+
+            case 'text-decoration':
+              if (parse) this.newStyles.textDecorationInitial = this.cssParsed[ccsp].value;
+
+              if (this.newStyles.textDecorationInitial.length > 0) {
+                this.newStyles.textDecorationParsed = this.newStyles.textDecorationInitial;
               }
               break;
 

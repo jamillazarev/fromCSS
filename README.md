@@ -39,22 +39,23 @@ Write your notes below .fromCSS block. Notes will be saved in the same place aft
 | `background`, `background-color` | TBC |
 | `background-blend-mode` | TBC |
 | `box-shadow` | TBC |
-| `backdrop-filter` | `blur()` |
-| `transform` | `rotate()` |
-| `filter` | `blur()` |
+| `backdrop-filter` | `blur()` only |
+| `transform` | `rotate()` only |
+| `filter` | `blur()` only |
 
 
 | Text Property | Support | Supported Options
 | -- | -- | -- |
 | `color` | ✅ Yes |  `red`, <br />`#F00`, `#FF0000`, <br />`rgb(255,0,0)`, `rgba(255,0,0,0.5)`,<br />`hsl(0, 100%, 50%)` |
 | `font` shorthand | 🛑 None |
-| `font-size` | ✅ Yes | `px`, `rem`, `em`, `%`
-| `font-weight` | 🛑 None |
 | `font-family` | 🛑 None |
+| `font-size` | ✅ Yes | `px`, `rem`, `em`, `%`
+| `font-style` | 🛑 None |
+| `font-weight` | 🛑 None |
 | `line-height` | ✅ Yes | `px`, `rem`, `em`, `%`, and unitless shorthand
 | `letter-spacing` | 🛑 None |
 | `text-align` | ✅ Yes | `left`, `center`, `right`, `justify` |
-| `text-decoration` | 🛑 None |
+| `text-decoration` | ✅ Yes | `none`, `underline`, `line-through`, but not `overline` |
 | `text-transform` | ✅ Yes | `none`, `lowercase`,`uppercase`, `capitalize` |
 | `text-shadow` | ✅ Yes |
 
