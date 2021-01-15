@@ -22,11 +22,11 @@ function getSelc() {
     return ""
   }
 }
-async function loadFonts(node){
-  let len = node.characters.length
-  for (let i = 0; i < len; i++) {
-    await figma.loadFontAsync(node.getRangeFontName(i, i+1))
-  }
+
+async function loadFonts(node) {
+  await Promise.all(Array.from({length: node.characters.length}, (_, k) => k).map(i => {
+      return figma.loadFontAsync(node.getRangeFontName(i, i + 1))
+  }))
 }
 
 figma.on("selectionchange", () => {
