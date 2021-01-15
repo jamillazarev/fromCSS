@@ -22,17 +22,11 @@ function getSelc() {
     return ""
   }
 }
-async function loadFonts(selection){
-  for (const n in selection) {
-    const node = figma.getNodeById(selection[n].id);
-    if (node.type === "TEXT") {
-      let len = node.characters.length
-      for (let i = 0; i < len; i++) {
-        await figma.loadFontAsync(node.getRangeFontName(i, i+1))
-      }
-    }
 
-  }
+async function loadFonts(node) {
+  await Promise.all(Array.from({length: node.characters.length}, (_, k) => k).map(i => {
+      return figma.loadFontAsync(node.getRangeFontName(i, i + 1))
+  }))
 }
 
 figma.on("selectionchange", () => {
@@ -443,8 +437,8 @@ figma.ui.onmessage = async msg => {
           node.fills = filteredFills;
           node.fills = node.fills.concat(addedFills.reverse());
 
-          if (node.type==="TEXT") {
-            await loadFonts(selection);
+          if (node.type === "TEXT") {
+            await loadFonts(node);
           }
 
           for (const param in otherParameters) {
