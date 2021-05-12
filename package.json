@@ -20,7 +20,7 @@
         "webpack-cli": "^3.3.9"
     },
     "dependencies": {
-        "codemirror": "^5.51.0",
+        "codemirror": "^5.58.2",
         "color-js": "^1.0.5",
         "css-background-parser": "^0.1.0",
         "css-box-shadow": "^1.0.0-3",
